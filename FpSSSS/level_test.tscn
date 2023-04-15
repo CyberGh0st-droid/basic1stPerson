@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://crti1rq4qhjkc"]
+
+[ext_resource type="Shader" path="res://floorShader.gdshader" id="1_a62gy"]
+[ext_resource type="PackedScene" uid="uid://8mehw3himqwg" path="res://player.tscn" id="2_xlq31"]
+[ext_resource type="Environment" uid="uid://b2g4xjv4lo8n" path="res://default_environment.tres" id="3_p1gkc"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_u71ps"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_enfm3"]
+render_priority = 0
+shader = ExtResource("1_a62gy")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_l3sk3"]
+size = Vector2(20, 20)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dwees"]
+render_priority = 0
+shader = ExtResource("1_a62gy")
+
+[node name="LevelTest" type="Node3D"]
+
+[node name="floor" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor"]
+shape = SubResource("WorldBoundaryShape3D_u71ps")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor"]
+material_override = SubResource("ShaderMaterial_enfm3")
+mesh = SubResource("PlaneMesh_l3sk3")
+surface_material_override/0 = SubResource("ShaderMaterial_dwees")
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("2_xlq31")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.41265, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.799527, 0.60063, 0, -0.60063, 0.799527, 0, 14.742, 4.01283)
+light_energy = 1.546
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("3_p1gkc")
+
+[node name="CharacterBody3D2" parent="." instance=ExtResource("2_xlq31")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6646, -3.96855)

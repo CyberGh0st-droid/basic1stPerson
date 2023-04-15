@@ -1,0 +1,10 @@
+[gd_resource type="Environment" format=3 uid="uid://b2g4xjv4lo8n"]
+
+[resource]
+background_mode = 1
+background_color = Color(0.372549, 0.729412, 0.866667, 1)
+ambient_light_color = Color(0.992157, 0.835294, 0.72549, 1)
+reflected_light_source = 2
+tonemap_mode = 2
+tonemap_white = 0.45
+ssr_fade_in = 0.0609189
